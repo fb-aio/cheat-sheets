@@ -128,6 +128,9 @@ body {
   border-bottom: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header::after {
@@ -197,6 +200,36 @@ body {
   color: var(--text-secondary);
   font-family: "JetBrains Mono", monospace;
   letter-spacing: 0.5px;
+}
+
+.github-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 255, 249, 0.1);
+  border: 1px solid var(--primary-cyan);
+  border-radius: 8px;
+  color: var(--primary-cyan);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.github-btn:hover {
+  background: rgba(0, 255, 249, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 249, 0.4);
+  transform: translateY(-2px) rotate(5deg);
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+}
+
+.github-btn svg {
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 0 5px currentColor);
 }
 
 .search-box {
@@ -723,6 +756,16 @@ body {
 
   .shield-icon {
     font-size: 30px;
+  }
+
+  .github-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .github-btn svg {
+    width: 20px;
+    height: 20px;
   }
 
   .viewer-header {
