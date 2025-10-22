@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity & IT Cheat Sheets Collection</title>
+
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile toggle button -->
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      📚
+    </button>
+
+    <div class="container">
+      <!-- Sidebar with PDF list -->
+      <div class="sidebar">
+        <div class="header">
+          <h1>📚 Cheat Sheets</h1>
+          <p>Cybersecurity & IT Reference Collection</p>
+        </div>
+
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search cheat sheets..."
+          />
+        </div>
+
+        <div class="pdf-list" id="pdfList">
+          <!-- PDF items will be dynamically inserted here -->
+        </div>
+      </div>
+
+      <!-- PDF Viewer -->
+      <div class="viewer-container">
+        <div class="viewer-header">
+          <div class="viewer-title" id="viewerTitle">
+            Select a cheat sheet to view
+          </div>
+          <div class="viewer-actions">
+            <a
+              href="#"
+              class="btn"
+              id="downloadBtn"
+              download
+              style="display: none"
+              >⬇ Download</a
+            >
+            <a
+              href="#"
+              class="btn"
+              id="openNewTabBtn"
+              target="_blank"
+              style="display: none"
+              >🔗 Open in New Tab</a
+            >
+          </div>
+        </div>
+        <div id="viewerContent">
+          <div class="empty-state">
+            <div class="empty-state-icon">📄</div>
+            <h2>No PDF Selected</h2>
+            <p>Select a cheat sheet from the sidebar to view it here</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

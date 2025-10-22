@@ -1,0 +1,16 @@
+{
+  "name": "cheat-sheets",
+  "version": "1.0.0",
+  "description": "A collection of cheat sheets for various technologies and certifications",
+  "scripts": {
+    "update-pdfs": "node script/update-pdf-structure.js"
+  },
+  "keywords": [
+    "cheat-sheets",
+    "pdf",
+    "cybersecurity",
+    "certifications"
+  ],
+  "author": "",
+  "license": "MIT"
+}
