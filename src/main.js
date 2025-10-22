@@ -6,16 +6,12 @@ let currentPdf = null;
 // Mobile menu functions
 function toggleMobileMenu() {
   const sidebar = document.querySelector(".sidebar");
-  const mobileOverlay = document.getElementById("mobileOverlay");
   sidebar.classList.toggle("active");
-  mobileOverlay.classList.toggle("active");
 }
 
 function closeMobileMenu() {
   const sidebar = document.querySelector(".sidebar");
-  const mobileOverlay = document.getElementById("mobileOverlay");
   sidebar.classList.remove("active");
-  mobileOverlay.classList.remove("active");
 }
 
 // Render PDF list
@@ -23,22 +19,56 @@ function renderPdfList(categories = pdfFiles) {
   const pdfListElement = document.getElementById("pdfList");
   pdfListElement.innerHTML = "";
 
-  categories.forEach((categoryObj) => {
-    const categoryHeader = document.createElement("div");
-    categoryHeader.className = "category-header";
-    categoryHeader.innerHTML = `${categoryObj.category} <span class="pdf-count">${categoryObj.pdfs.length}</span>`;
-    pdfListElement.appendChild(categoryHeader);
+  // Icon mapping for categories
+  const categoryIcons = {
+    Career: "💼",
+    "Cloud & AWS": "☁️",
+    "CompTIA Certifications": "🎓",
+    "Hacking Tools": "⚔️",
+    Networking: "🌐",
+    "Operating Systems": "💻",
+    Programming: "⚡",
+    "Security Certifications": "🔐",
+    "Tools & Utilities": "🛠️",
+  };
 
+  categories.forEach((categoryObj) => {
+    // Create category container
+    const categoryContainer = document.createElement("div");
+    categoryContainer.className = "category-container";
+
+    // Create category header
+    const categoryHeader = document.createElement("div");
+    categoryHeader.className = "category-header collapsed";
+    categoryHeader.innerHTML = `${categoryObj.category} <span class="pdf-count">${categoryObj.pdfs.length}</span>`;
+
+    // Create category content (PDF items container)
+    const categoryContent = document.createElement("div");
+    categoryContent.className = "category-content collapsed";
+
+    // Add PDF items to category content
     categoryObj.pdfs.forEach((pdf) => {
       const item = document.createElement("div");
       item.className = "pdf-item";
+      const icon = categoryIcons[categoryObj.category] || "📄";
       item.innerHTML = `
-                <span class="pdf-icon">📄</span>
+                <span class="pdf-icon">${icon}</span>
                 <span class="pdf-name">${pdf.name}</span>
             `;
       item.onclick = () => loadPdf(pdf);
-      pdfListElement.appendChild(item);
+      categoryContent.appendChild(item);
     });
+
+    // Toggle collapse/expand on header click
+    categoryHeader.onclick = () => {
+      categoryHeader.classList.toggle("collapsed");
+      categoryContent.classList.toggle("collapsed");
+    };
+
+    // Append header and content to container
+    categoryContainer.appendChild(categoryHeader);
+    categoryContainer.appendChild(categoryContent);
+    pdfListElement.appendChild(categoryContainer);
   });
 }
 
@@ -115,9 +145,6 @@ document.getElementById("searchInput").addEventListener("input", (e) => {
 document
   .getElementById("mobileToggle")
   .addEventListener("click", toggleMobileMenu);
-document
-  .getElementById("mobileOverlay")
-  .addEventListener("click", closeMobileMenu);
 
 // Initialize the page
 renderPdfList();

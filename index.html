@@ -3,32 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cybersecurity & IT Cheat Sheets Collection</title>
-
+    <title>CyberSec Arsenal | Cheat Sheets Collection</title>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <!-- Mobile overlay -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <!-- Animated background -->
+    <div class="cyber-bg"></div>
 
     <!-- Mobile toggle button -->
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-      📚
+      <span class="menu-icon">☰</span>
     </button>
 
     <div class="container">
       <!-- Sidebar with PDF list -->
       <div class="sidebar">
         <div class="header">
-          <h1>📚 Cheat Sheets</h1>
-          <p>Cybersecurity & IT Reference Collection</p>
+          <div class="logo">
+            <span class="shield-icon">🛡️</span>
+            <div class="logo-text">
+              <h1><span class="cyber-text">CYBER</span>SEC ARSENAL</h1>
+              <p class="tagline">&gt;_ Security Knowledge Base</p>
+            </div>
+          </div>
         </div>
 
         <div class="search-box">
+          <span class="search-icon">⚡</span>
           <input
             type="text"
             id="searchInput"
-            placeholder="🔍 Search cheat sheets..."
+            placeholder="Search cheat sheets..."
+            autocomplete="off"
           />
         </div>
 
@@ -41,7 +47,8 @@
       <div class="viewer-container">
         <div class="viewer-header">
           <div class="viewer-title" id="viewerTitle">
-            Select a cheat sheet to view
+            <span class="terminal-prompt">&gt;_</span> Select a cheat sheet to
+            view
           </div>
           <div class="viewer-actions">
             <a
@@ -50,7 +57,7 @@
               id="downloadBtn"
               download
               style="display: none"
-              >⬇ Download</a
+              ><span class="btn-icon">⬇</span> Download</a
             >
             <a
               href="#"
@@ -58,15 +65,22 @@
               id="openNewTabBtn"
               target="_blank"
               style="display: none"
-              >🔗 Open in New Tab</a
+              ><span class="btn-icon">↗</span> New Tab</a
             >
           </div>
         </div>
         <div id="viewerContent">
           <div class="empty-state">
-            <div class="empty-state-icon">📄</div>
-            <h2>No PDF Selected</h2>
-            <p>Select a cheat sheet from the sidebar to view it here</p>
+            <div class="empty-state-icon">
+              <div class="lock-icon">🔒</div>
+              <div class="scan-effect"></div>
+            </div>
+            <h2>SYSTEM READY</h2>
+            <p>&gt;_ Select a cheat sheet from the sidebar to begin</p>
+            <div class="status-bar">
+              <span class="status-item">● ONLINE</span>
+              <span class="status-item">● SECURE</span>
+            </div>
           </div>
         </div>
       </div>
