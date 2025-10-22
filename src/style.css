@@ -27,6 +27,8 @@ body {
   color: var(--text-primary);
   overflow: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Animated Background */
@@ -281,17 +283,16 @@ body {
 
 .pdf-item {
   padding: 12px 15px;
-  margin-bottom: 8px;
   background: rgba(15, 22, 41, 0.4);
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
   gap: 10px;
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 255, 249, 0.1);
 }
 
 .pdf-item::before {
@@ -307,10 +308,8 @@ body {
 }
 
 .pdf-item:hover {
-  background: rgba(15, 22, 41, 0.8);
-  border-color: var(--border-color);
   transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(0, 255, 249, 0.1);
+  /* box-shadow: 0 4px 15px rgba(0, 255, 249, 0.1); */
 }
 
 .pdf-item:hover::before {
@@ -629,7 +628,7 @@ body {
 .category-content {
   max-height: 5000px;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+  transition: max-height 0.2s ease, opacity 0.3s ease;
   opacity: 1;
 }
 
@@ -652,7 +651,7 @@ body {
 
 /* Scrollbar styling */
 .pdf-list::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 .pdf-list::-webkit-scrollbar-track {
@@ -705,7 +704,18 @@ body {
   transform: translateY(-2px);
 }
 
-/* Responsive design */
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive design - Mobile Performance Optimizations */
 @media (max-width: 768px) {
   body {
     overflow: auto;
@@ -804,7 +814,6 @@ body {
 
   .pdf-item {
     padding: 14px 15px;
-    margin-bottom: 10px;
   }
 
   .pdf-name {
@@ -832,10 +841,6 @@ body {
 
 /* Small mobile devices */
 @media (max-width: 480px) {
-  /* .sidebar {
-    width: 90%;
-  } */
-
   .header {
     padding: 20px 15px;
   }
@@ -855,6 +860,11 @@ body {
     font-size: 22px;
     bottom: 15px;
     right: 15px;
+  }
+
+  /* Further optimize for small screens */
+  .cyber-bg {
+    background: var(--bg-darker); /* Remove gradients */
   }
 }
 
